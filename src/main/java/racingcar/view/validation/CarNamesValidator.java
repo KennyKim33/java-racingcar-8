@@ -1,9 +1,13 @@
 package racingcar.view.validation;
 
+import racingcar.util.StringValidator;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+
 
 public class CarNamesValidator {
     private static final String DELIMITER = ",";
@@ -11,16 +15,10 @@ public class CarNamesValidator {
     private CarNamesValidator() {}
 
     public static void validateCarNames(String input) {
-        validateNotBlank(input);
+        StringValidator.validateNotBlank(input);
         validateNotStartsWithDelimiter(input);
         validateNotEndsWithDelimiter(input);
         validateNoDuplicateCarNames(input);
-    }
-
-    private static void validateNotBlank(String input) {
-        if (input == null || input.isBlank()) {
-            throw new IllegalArgumentException("입력값은 null 이거나 공백일 수 없습니다.");
-        }
     }
 
     private static void validateNotStartsWithDelimiter(String input) {

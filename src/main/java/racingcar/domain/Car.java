@@ -1,10 +1,13 @@
 package racingcar.domain;
 
+import racingcar.util.StringValidator;
+
 import java.util.regex.Pattern;
 
 public class Car {
     private static final Pattern CAR_NAME_REGEX = Pattern.compile("^[a-zA-Z0-9가-힣]+$");
     private static final int MAX_CAR_NAME_LENGTH = 5;
+    private static final String CAR_NAME_FIELD = "자동차 이름";
 
     private final String name;
     private final MovingStrategy movingStrategy;
@@ -18,17 +21,11 @@ public class Car {
     }
 
     private void validateCarName(String name) {
-        validateNotBlank(name);
+        StringValidator.validateNotBlank(name,CAR_NAME_FIELD);
 
         validateNameLength(name);
 
         validateNamePattern(name);
-    }
-
-    private void validateNotBlank(String name) {
-        if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("자동차 이름은 빈칸이 될 수 없습니다.");
-        }
     }
 
     private void validateNameLength(String name) {

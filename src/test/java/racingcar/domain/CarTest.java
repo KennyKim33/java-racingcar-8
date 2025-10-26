@@ -25,7 +25,7 @@ class CarTest {
 
         assertThatThrownBy(() -> new Car(name, movingStrategy))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("자동차 이름은 빈칸이 될 수 없습니다.");
+                .hasMessage("자동차 이름은 null 이거나 공백일 수 없습니다.");
     }
 
     @ParameterizedTest
