@@ -13,6 +13,8 @@ public class RaceService {
 
     public List<Car> playRound() {
         racingCars.forEach(Car::move);
-        return List.copyOf(racingCars);
+        return racingCars.stream()
+                .map(Car::copy)
+                .toList();
     }
 }
