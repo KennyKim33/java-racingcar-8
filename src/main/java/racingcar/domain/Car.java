@@ -21,7 +21,7 @@ public class Car {
     }
 
     private void validateCarName(String name) {
-        StringValidator.validateNotBlank(name,CAR_NAME_FIELD);
+        StringValidator.validateNotBlank(name, CAR_NAME_FIELD);
 
         validateNameLength(name);
 

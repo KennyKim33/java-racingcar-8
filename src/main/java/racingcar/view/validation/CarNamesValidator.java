@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Set;
 
 
-
 public class CarNamesValidator {
     private static final String DELIMITER = ",";
 
-    private CarNamesValidator() {}
+    private CarNamesValidator() {
+    }
 
     public static void validateCarNames(String input) {
         StringValidator.validateNotBlank(input);
