@@ -1,5 +1,6 @@
 package racingcar.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import racingcar.domain.Car;
 import racingcar.domain.MovingStrategy;
@@ -65,5 +66,21 @@ class RaceServiceTest {
         assertThat(actual).usingRecursiveComparison()
                 .ignoringFields("position")
                 .isEqualTo(expected);
+    }
+
+    @Test
+    void 불변_리스트를_반환한다() {
+        MovingStrategy movingStrategy = () -> true;
+        List<Car> cars = List.of(
+                new Car("car1", movingStrategy),
+                new Car("car2", movingStrategy),
+                new Car("car3", movingStrategy)
+        );
+
+        raceService = new RaceService(cars);
+
+        List<Car> result = raceService.playRound();
+
+        assertThat(result).isUnmodifiable();
     }
 }
