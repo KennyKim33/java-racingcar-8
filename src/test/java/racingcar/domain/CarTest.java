@@ -20,7 +20,7 @@ class CarTest {
     @ParameterizedTest
     @NullAndEmptySource
     @ValueSource(strings = {" ", "  ", "\t", "\n"})
-    void 빈칸이거나_null이면_예외를_던진다(String name) {
+    void 빈칸이거나_null이면_예외가_발생한다(String name) {
         MovingStrategy movingStrategy = () -> true;
 
         assertThatThrownBy(() -> new Car(name, movingStrategy))
@@ -30,7 +30,7 @@ class CarTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"carname", "carrrname"})
-    void 자동차_이름이_6자_이상이면_예외를_던진다(String name) {
+    void 자동차_이름이_6자_이상이면_예외가_발생한다(String name) {
         MovingStrategy movingStrategy = () -> true;
 
         assertThatThrownBy(() -> new Car(name, movingStrategy))
@@ -40,7 +40,7 @@ class CarTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"po-bi", "car!", "이름@", "내 차", "car#1"})
-    void 특수문자나_공백이_포함된_이름이면_예외를_던진다(String invalidName) {
+    void 특수문자나_공백이_포함된_이름이면_예외가_발생한다(String invalidName) {
         MovingStrategy mockStrategy = () -> true;
 
         assertThatThrownBy(() -> new Car(invalidName, mockStrategy))
