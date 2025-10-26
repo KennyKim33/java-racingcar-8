@@ -1,10 +1,13 @@
 package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import racingcar.view.validation.AttemptCountValidator;
 import racingcar.view.validation.CarNamesValidator;
 
 public class InputView {
     private static final String CAR_NAMES_INPUT_MESSAGE = "경주할 자동차 이름을 입력해주세요 (이름은 쉼표(,) 기준으로 구분)";
+    private static final String ATTEMPT_COUNT_INPUT_MESSAGE = "시도할 횟수는 몇 회인가요?";
+
     public String inputCarNames() {
         System.out.println(CAR_NAMES_INPUT_MESSAGE);
         String input = Console.readLine();
@@ -12,4 +15,10 @@ public class InputView {
         return input;
     }
 
+    public String inputAttemptCount() {
+        System.out.println(ATTEMPT_COUNT_INPUT_MESSAGE);
+        String input = Console.readLine();
+        AttemptCountValidator.validateAttemptCount(input);
+        return input;
+    }
 }
