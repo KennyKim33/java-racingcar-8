@@ -67,4 +67,30 @@ class CarTest {
 
         assertThat(car.getPosition()).isEqualTo(0);
     }
+
+    @Test
+    void 새로운_Car_객체를_반환한다() {
+        MovingStrategy strategy = () -> true;
+        Car original = new Car("pobi", strategy);
+        original.move();
+
+        Car copied = original.copy();
+
+        assertThat(copied).isNotSameAs(original);
+        assertThat(copied.getName()).isEqualTo(original.getName());
+        assertThat(copied.getPosition()).isEqualTo(original.getPosition());
+    }
+
+    @Test
+    void 복사본이_원본에_영향을_받지_않는다() {
+        MovingStrategy strategy = () -> true;
+        Car original = new Car("pobi", strategy);
+        original.move();
+
+        Car copied = original.copy();
+        original.move();
+
+        assertThat(original.getPosition()).isEqualTo(2);
+        assertThat(copied.getPosition()).isEqualTo(1);
+    }
 }
