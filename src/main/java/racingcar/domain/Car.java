@@ -20,6 +20,16 @@ public class Car {
         this.position = 0;
     }
 
+    private Car(String name, MovingStrategy movingStrategy, int position) {
+        this.name = name;
+        this.movingStrategy = movingStrategy;
+        this.position = position;
+    }
+
+    public Car copy() {
+        return new Car(this.name, this.movingStrategy, this.position);
+    }
+
     private void validateCarName(String name) {
         StringValidator.validateNotBlank(name, CAR_NAME_FIELD);
 
